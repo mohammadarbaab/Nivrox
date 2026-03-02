@@ -15,7 +15,14 @@
         <div class="new-collections__track">
           {% for block in section.blocks %}
             <div class="new-collections__item" {{ block.shopify_attributes }}>
+              
+              <!-- IMAGE -->
               <div class="new-collections__image-wrap">
+
+                {% if block.settings.button_url != blank %}
+                  <a href="{{ block.settings.button_url }}" class="new-collections__image-link">
+                {% endif %}
+
                 {% if block.settings.image != blank %}
                   <img
                     src="{{ block.settings.image | img_url: '600x800', crop: 'center' }}"
@@ -28,8 +35,14 @@
                 {% else %}
                   {{ 'image' | placeholder_svg_tag: 'new-collections__placeholder' }}
                 {% endif %}
+
+                {% if block.settings.button_url != blank %}
+                  </a>
+                {% endif %}
+
               </div>
 
+              <!-- CONTENT -->
               <div class="new-collections__item-body">
                 <h3 class="new-collections__item-title">
                   {{ block.settings.item_title }}
@@ -37,10 +50,13 @@
                 <p class="new-collections__item-desc">
                   {{ block.settings.item_description }}
                 </p>
-                <a href="{{ block.settings.button_url }}" class="new-collections__link">
-                  {{ block.settings.button_label }}
-                </a>
+                {% if block.settings.button_url != blank %}
+                  <a href="{{ block.settings.button_url }}" class="new-collections__link">
+                    {{ block.settings.button_label }}
+                  </a>
+                {% endif %}
               </div>
+
             </div>
           {% endfor %}
         </div>
@@ -55,9 +71,12 @@
 </section>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+
+/* Background */
 #{{ section_id }} {
-  background-color: #f0ede8;
-  padding: 40px 20px 60px;
+  background: linear-gradient(135deg, #f8f6f2 0%, #ece7df 100%);
+  padding: 50px 20px 70px;
   overflow: hidden;
 }
 
@@ -66,33 +85,36 @@
   margin: 0 auto;
   display: flex;
   align-items: flex-start;
-  gap: 0;
 }
 
 #{{ section_id }} .new-collections__content {
   flex: 1;
-  min-width: 0;
   width: 100%;
 }
 
+/* Title */
 #{{ section_id }} .new-collections__title {
-  font-family: Georgia, serif;
-  font-size: 48px;
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
   text-align: center;
-  margin-bottom: 20px;
-  font-weight: normal;
-  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #2d2a26;
 }
 
+/* Description */
 #{{ section_id }} .new-collections__description {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 40px;
-  font-size: 14px;
-  color: #999;
-  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto 45px;
+  font-size: 15px;
+  color: #7a756d;
+  line-height: 1.9;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Track */
 #{{ section_id }} .new-collections__track-wrapper {
   overflow: hidden;
 }
@@ -109,10 +131,16 @@
   flex-direction: column;
 }
 
+/* Image */
 #{{ section_id }} .new-collections__image-wrap {
   aspect-ratio: 3/4;
   overflow: hidden;
   margin-bottom: 16px;
+}
+
+#{{ section_id }} .new-collections__image-link {
+  display: block;
+  height: 100%;
 }
 
 #{{ section_id }} .new-collections__image {
@@ -120,300 +148,95 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.6s ease;
+  cursor: pointer;
 }
 
+/* Premium Hover Zoom */
+#{{ section_id }} .new-collections__image-link:hover .new-collections__image {
+  transform: scale(1.05);
+}
+
+/* Item Title */
 #{{ section_id }} .new-collections__item-title {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 10px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  color: #2d2a26;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Item Description */
 #{{ section_id }} .new-collections__item-desc {
   font-size: 13px;
-  color: #999;
+  color: #8a857d;
   margin-bottom: 16px;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-family: 'Poppins', sans-serif;
 }
 
+/* Link */
 #{{ section_id }} .new-collections__link {
   font-size: 12px;
   text-transform: uppercase;
-  text-decoration: underline;
-  color: #333;
+  text-decoration: none;
+  color: #2d2a26;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  position: relative;
+  font-family: 'Poppins', sans-serif;
+}
+
+#{{ section_id }} .new-collections__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: #2d2a26;
+  transition: 0.3s ease;
 }
 
 #{{ section_id }} .new-collections__link:hover {
-  color: #666;
+  color: #b48a5a;
 }
 
+#{{ section_id }} .new-collections__link:hover::after {
+  background-color: #b48a5a;
+}
+
+/* Arrows */
 #{{ section_id }} .new-collections__arrow {
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 24px;
-  padding: 0;
-  color: #bbb;
-  flex-shrink: 0;
+  font-size: 26px;
+  color: #b0aaa2;
   margin-top: 150px;
-  transition: color 0.3s ease;
-  min-width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: 0.3s ease;
 }
 
 #{{ section_id }} .new-collections__arrow:hover {
-  color: #666;
+  color: #b48a5a;
 }
 
-#{{ section_id }} .new-collections__arrow--prev {
-  order: -1;
-  margin-right: 20px;
-}
-
-#{{ section_id }} .new-collections__arrow--next {
-  margin-left: 20px;
-}
-
-/* Tablet: 2 items */
+/* Responsive */
 @media (max-width: 1024px) {
   #{{ section_id }} .new-collections__item {
     flex: 0 0 calc((100% - 24px)/2);
   }
 }
 
-/* Small Tablet / Large Mobile: 1 item */
 @media (max-width: 768px) {
   #{{ section_id }} .new-collections__item {
     flex: 0 0 100%;
   }
-  
-}
-
-/* Mobile: 1 item */
-@media (max-width: 480px) {
-  #{{ section_id }} .new-collections__item {
-    flex: 0 0 100%;
-  }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 360px) {
-  #{{ section_id }} .new-collections__item {
-    flex: 0 0 100%;
-  }
-}
-@media (max-width: 426px) {
   #{{ section_id }} .new-collections__title,
   #{{ section_id }} .new-collections__description {
     display: none;
   }
 }
-</style>  
-<script>
-(function() {
-  var section = document.getElementById('{{ section_id }}');
-  if (!section) return;
-
-  var track = section.querySelector('.new-collections__track');
-  var prevBtn = section.querySelector('.new-collections__arrow--prev');
-  var nextBtn = section.querySelector('.new-collections__arrow--next');
-  var isAnimating = false;
-  var autoSlideInterval;
-
-  function getVisibleItems() {
-    var width = window.innerWidth;
-    if (width <= 480) return 1;
-    if (width <= 768) return 1;
-    if (width <= 1024) return 2;
-    return 3;
-  }
-
-  function setupSlider() {
-    var items = Array.from(track.children).filter(item => !item.classList.contains('clone'));
-    var visibleItems = getVisibleItems();
-    var gap = parseInt(getComputedStyle(track).gap) || 0;
-
-    // Remove old clones
-    track.querySelectorAll('.clone').forEach(c => c.remove());
-
-    // Width calculation
-    var trackWidth = track.offsetWidth;
-    var itemWidth = trackWidth / visibleItems - gap * ((visibleItems - 1) / visibleItems);
-
-    // Set item widths
-    items.forEach(item => {
-      item.style.flex = `0 0 ${itemWidth}px`;
-    });
-
-    // Clone items for infinite loop
-    var originalCount = items.length;
-    for (var i = 0; i < originalCount; i++) {
-      var clone = items[i].cloneNode(true);
-      clone.classList.add('clone');
-      track.appendChild(clone);
-    }
-    for (var i = originalCount - 1; i >= 0; i--) {
-      var clone = items[i].cloneNode(true);
-      clone.classList.add('clone');
-      track.insertBefore(clone, items[0]);
-    }
-
-    track.style.transition = 'none';
-    track.style.transform = `translateX(-${originalCount * (itemWidth + gap)}px)`;
-  }
-
-  function slideNext() {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    var visibleItems = getVisibleItems();
-    var gap = parseInt(getComputedStyle(track).gap) || 0;
-    var itemWidth = track.offsetWidth / visibleItems - gap * ((visibleItems - 1) / visibleItems);
-
-    var currentTransform = track.style.transform.match(/-?[\d.]+/)[0];
-    var newTransform = parseFloat(currentTransform) - (itemWidth + gap);
-
-    track.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
-    track.style.transform = `translateX(${newTransform}px)`;
-
-    track.addEventListener("transitionend", function handler() {
-      var items = Array.from(track.children);
-      track.appendChild(items[0]);
-      track.style.transition = "none";
-      track.style.transform = `translateX(${parseFloat(newTransform) + (itemWidth + gap)}px)`;
-      isAnimating = false;
-      track.removeEventListener("transitionend", handler);
-    });
-  }
-
-  function slidePrev() {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    var visibleItems = getVisibleItems();
-    var gap = parseInt(getComputedStyle(track).gap) || 0;
-    var itemWidth = track.offsetWidth / visibleItems - gap * ((visibleItems - 1) / visibleItems);
-
-    var items = Array.from(track.children);
-    track.insertBefore(items[items.length - 1], items[0]);
-
-    var currentTransform = track.style.transform.match(/-?[\d.]+/)[0];
-    track.style.transition = "none";
-    track.style.transform = `translateX(${parseFloat(currentTransform) - (itemWidth + gap)}px)`;
-
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        track.style.transition = "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
-        track.style.transform = `translateX(${parseFloat(currentTransform)}px)`;
-      });
-    });
-
-    track.addEventListener("transitionend", function handler() {
-      isAnimating = false;
-      track.removeEventListener("transitionend", handler);
-    });
-  }
-
-  nextBtn.addEventListener("click", () => {
-    slideNext();
-    resetAutoSlide();
-  });
-  prevBtn.addEventListener("click", () => {
-    slidePrev();
-    resetAutoSlide();
-  });
-
-  var resizeTimer;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(setupSlider, 250);
-  });
-
-  function startAutoSlide() {
-    autoSlideInterval = setInterval(slideNext, 2000); // slide every 1 second
-  }
-
-  function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    startAutoSlide();
-  }
-  // changes code
-
-  setupSlider();
-  startAutoSlide(); // start auto sliding
-})();
-</script>
-
-{% schema %}
-{
-  "name": "New Collections",
-  "tag": "section",
-  "class": "section-new-collections",
-  "settings": [
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "New Collections"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptas ut dolorum consequuntur, adipisci repellat!"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "collection_item",
-      "name": "Collection Item",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image"
-        },
-        {
-          "type": "text",
-          "id": "item_title",
-          "label": "Item Title",
-          "default": "Soft Leather Jackets"
-        },
-        {
-          "type": "textarea",
-          "id": "item_description",
-          "label": "Item Description",
-          "default": "Scelerisque duis aliquam qui lorem ipsum dolor amet, consectetur adipiscing elit."
-        },
-        {
-          "type": "text",
-          "id": "button_label",
-          "label": "Button Label",
-          "default": "Discover Now"
-        },
-        {
-          "type": "url",
-          "id": "button_url",
-          "label": "Button URL"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "New Collections",
-      "blocks": [
-        {"type": "collection_item"},
-        {"type": "collection_item"},
-        {"type": "collection_item"}
-      ]
-    }
-  ]
-}
-{% endschema %}
+</style>

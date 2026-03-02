@@ -1,5 +1,5 @@
 
-
+<div class="main-container">
 {% liquid
   assign order = 'logo,menu,localization,search,mobile_search,actions'
 
@@ -166,6 +166,7 @@
     assign class = class | append: ' ' | append: collapse_header_paddings_class
   endif
 %}
+</div>
 
 {% capture localization_markup %}
   {% liquid
@@ -367,12 +368,17 @@
 {% stylesheet %}
   body {
     --header-height: 60px;
+    
     --header-group-height: var(--header-height);
     --transparent-header-offset-boolean: 0; /* stylelint-disable-line declaration-property-value-disallowed-list */
   }
 
   .header {
     display: block;
+    
+  }
+  .main-container{
+    background: linear-gradient(135deg, #f8f6f2 0%, #ece7df 100%);
   }
 
   /* ensure the header stays on top of everything else */
@@ -511,7 +517,7 @@
     position: relative;
 
     /* will default to bg from its color scheme unless --header-bg-color is transparent */
-    background-color: var(--header-bg-color, var(--color-background));
+    background: linear-gradient(135deg, #f8f6f2 0%, #ece7df 100%);
   }
 
   .header__row--top:not(.divider--page-width),
