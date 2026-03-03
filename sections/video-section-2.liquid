@@ -1,7 +1,13 @@
 <div class="video-container">
-  <video autoplay muted loop playsinline>
-    <source src="{{ 'vidTrim.mp4' | asset_url }}" type="video/mp4">
-  </video>
+  <video autoplay muted loop playsinline poster="{{ section.settings.poster_image | asset_url }}">
+  {% if section.settings.video_url != blank %}
+    <source src="{{ section.settings.video_url }}" type="video/mp4">
+  {% elsif section.settings.video != blank %}
+    <source src="{{ section.settings.video | asset_url }}" type="video/mp4">
+  {% else %}
+    <source src="{{ 'default-video.mp4' | asset_url }}" type="video/mp4">
+  {% endif %}
+</video>
 
  <div class="overlay-content">
     <div class="content-inner">
