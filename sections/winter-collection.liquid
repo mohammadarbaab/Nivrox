@@ -1,0 +1,174 @@
+<section class="winter-collection">
+  <div class="winter-container">
+
+    <div class="winter-image">
+      <img 
+        src="{{ section.settings.image | image_url: width: 900 }}" 
+        alt="collection"
+        loading="lazy"
+      >
+    </div>
+
+    <div class="winter-content">
+
+      <h2 class="winter-title">
+        {{ section.settings.heading }}
+      </h2>
+
+      <p class="winter-text">
+        {{ section.settings.text }}
+      </p>
+
+      <a href="{{ section.settings.button_link }}" class="winter-btn">
+        {{ section.settings.button_label }}
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+
+.winter-collection{
+padding:80px 20px;
+background:#f3f3f3;
+}
+
+.winter-container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:40px;
+}
+
+/* IMAGE */
+
+.winter-image img{
+width:100%;
+height:auto;
+display:block;
+}
+
+/* CONTENT */
+
+.winter-content{
+background:#fff;
+padding:70px;
+}
+
+.winter-title{
+font-size:42px;
+font-weight:500;
+letter-spacing:2px;
+margin-bottom:25px;
+line-height:1.2;
+}
+
+.winter-text{
+font-size:16px;
+color:#6b6b6b;
+line-height:1.8;
+margin-bottom:30px;
+max-width:420px;
+}
+
+.winter-btn{
+display:inline-block;
+background:#111;
+color:#fff;
+padding:14px 28px;
+text-decoration:none;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.winter-btn:hover{
+background:#333;
+}
+
+/* TABLET */
+
+@media(max-width:1024px){
+
+.winter-content{
+padding:50px;
+}
+
+.winter-title{
+font-size:34px;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.winter-container{
+grid-template-columns:1fr;
+}
+
+.winter-content{
+padding:40px;
+}
+
+.winter-title{
+font-size:28px;
+}
+
+}
+
+</style>
+
+
+{% schema %}
+{
+"name": "Winter Collection",
+"settings": [
+
+{
+"type":"image_picker",
+"id":"image",
+"label":"Collection Image"
+},
+
+{
+"type":"text",
+"id":"heading",
+"default":"CLASSIC WINTER COLLECTION",
+"label":"Heading"
+},
+
+{
+"type":"textarea",
+"id":"text",
+"default":"Dignissim lacus, turpis ut suspendisse vel tellus. Turpis purus, gravida orci, fringilla a. Ac sed eu fringilla odio mi.",
+"label":"Description"
+},
+
+{
+"type":"text",
+"id":"button_label",
+"default":"SHOP COLLECTION",
+"label":"Button Label"
+},
+
+{
+"type":"url",
+"id":"button_link",
+"label":"Button Link"
+}
+
+],
+
+"presets":[
+{
+"name":"Winter Collection"
+}
+]
+}
+{% endschema %}
