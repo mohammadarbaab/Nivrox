@@ -169,9 +169,9 @@
       "name": "Winter Collection",
       "settings": {
         "image": "shopify://shop_images/girls_image.jpg",
-        "heading": "CLASSIC WINTER COLLECTION",
-        "text": "Discover the winter collection from Nivrox featuring premium fabrics, modern tailoring, and timeless designs. Built for comfort, warmth, and effortless style throughout the season.",
-        "button_label": "SHOP COLLECTION",
+        "heading": "CLASSIC TROUSER COLLECTION",
+        "text": "Discover Nivrox trousers designed with modern fits, premium fabrics, and effortless style. Perfect for everyday wear, work, and casual occasions.",
+        "button_label": "Shop Trousers",
         "button_link": ""
       }
     },
@@ -179,9 +179,9 @@
       "type": "image-text-split",
       "settings": {
         "image": "shopify://shop_images/model-8.png",
-        "heading": "DISCOVER DENIM",
-        "text": "Elevate your wardrobe with contemporary denim designed for a sharp silhouette, superior comfort, and a clean premium look.",
-        "button_label": "SHOP NOW",
+        "heading": "SIGNATURE TROUSERS",
+        "text": "Our signature trousers combine modern tailoring with comfortable fabrics to deliver a sharp silhouette and effortless everyday style.",
+        "button_label": "Shop Collection",
         "button_link": "shopify://collections"
       }
     },
@@ -189,8 +189,8 @@
       "type": "image-text-split-s",
       "settings": {
         "image": "shopify://shop_images/model-9.png",
-        "heading": "DISCOVER DENIM",
-        "text": "Explore our premium Korean-inspired denim collection, crafted with modern fits and refined details for effortless everyday style and lasting comfort.",
+        "heading": "MODERN EVERYDAY STYLE",
+        "text": "Upgrade your wardrobe with Nivrox trousers and t-shirts designed for comfort, confidence, and clean modern style.",
         "button_label": "SHOP NOW",
         "button_link": "shopify://collections"
       }
@@ -198,8 +198,8 @@
     "custom_newsletter": {
       "type": "custom-newsletter",
       "settings": {
-        "heading": "SUBSCRIBE TO OUR EMAILS",
-        "subtext": "Be the first to know about new collections and exclusive offers."
+        "heading": "JOIN THE NIVROX COMMUNITY",
+        "subtext": "Subscribe to receive exclusive offers, new arrivals, and special drops from Nivrox."
       }
     },
     "video_section_HCLBhY_2": {
@@ -229,7 +229,7 @@
         "footer_menu_1": "home",
         "menu_2_title": "LEGAL",
         "footer_menu_2": "legal",
-        "description": "Nivrox represents contemporary style with sharp silhouettes, elevated fabrics, and lasting comfort. Designed for modern lifestyles, we blend minimal aesthetics with premium craftsmanship to deliver confidence in every look.",
+        "description": "Nivrox represents modern fashion with clean silhouettes, premium fabrics, and everyday comfort. Our collections focus on trousers and t-shirts designed for confident, effortless style.",
         "facebook": "https://facebook.com",
         "instagram": "https://instagram.com",
         "twitter": "https://twitter.com",
