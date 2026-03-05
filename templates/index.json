@@ -58,7 +58,7 @@
           "type": "collection_item",
           "settings": {
             "image": "shopify://shop_images/3.png",
-            "item_title": "Soft Leather Jackets",
+            "item_title": "Women's Wide Leg Trousers",
             "item_description": "Scelerisque duis aliquam qui lorem ipsum dolor amet, consectetur adipiscing elit.",
             "button_label": "Discover Now",
             "button_url": ""
@@ -83,8 +83,8 @@
         "collection_item_FgnwPU"
       ],
       "settings": {
-        "title": "New Collections",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe voluptas ut dolorum consequuntur, adipisci repellat! Eveniet commodi voluptatem voluptate, eum minima, in suscipit explicabo voluptatibus harum, quibusdam ex repellat eaque!"
+        "title": "FEATURED COLLECTIONS",
+        "description": "Explore the latest styles from Nivrox. Modern silhouettes, premium fabrics, and everyday comfort designed for effortless style."
       }
     },
     "collection_grid_FQ6ryr": {
