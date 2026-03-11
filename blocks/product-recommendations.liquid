@@ -171,28 +171,106 @@
 </product-recommendations>
 
 {% stylesheet %}
-  .product-recommendations-wrapper {
-    width: 100%;
+
+/* Page background style removed because Shopify page already has layout */
+
+.product-recommendations-wrapper{
+  width:100%;
+  display:flex;
+  justify-content:center;
+}
+
+/* Main recommendation card */
+.product-recommendations{
+  display:block;
+  max-width:780px;
+  width:100%;
+  background:#ffffff;
+  border-radius:28px;
+  box-shadow:0 20px 35px -8px rgba(0,0,0,0.08),0 8px 16px -6px rgba(0,0,0,0.02);
+  padding:2rem 2.2rem;
+}
+
+/* grid container spacing */
+.block-resource-list{
+  border-radius:var(--border-radius,0);
+}
+
+/* product grid */
+.resource-list{
+  margin-top:20px;
+}
+
+/* product item */
+.resource-list__item{
+  transition:all .15s ease;
+}
+
+/* hover effect like original */
+.resource-list__item:hover{
+  background:#fafbfc;
+  border-radius:14px;
+  padding:6px 8px;
+  margin-left:-8px;
+  margin-right:-8px;
+}
+
+/* product title */
+.resource-list__item .product-title,
+.resource-list__item .product-card__title{
+  font-size:1rem;
+  font-weight:500;
+  color:#121316;
+  line-height:1.5;
+}
+
+/* price styling */
+.resource-list__item .price{
+  font-size:1.1rem;
+  font-weight:700;
+  color:#0f1115;
+}
+
+/* compare price */
+.resource-list__item .price .price__compare{
+  color:#9aa3b2;
+  font-weight:400;
+}
+
+/* skeleton loading */
+.product-recommendations__skeleton-item{
+  aspect-ratio:3 / 4;
+  background-color:var(--color-foreground);
+  opacity:var(--skeleton-opacity);
+  border-radius:6px;
+}
+
+/* responsive */
+@media (max-width:550px){
+
+  .product-recommendations{
+    padding:1.5rem 1.2rem;
+    border-radius:24px;
   }
 
-  .product-recommendations-wrapper:has(product-recommendations[data-shopify-editor-preview]) {
-    width: 100vw;
+  .resource-list__item .product-title{
+    font-size:.95rem;
   }
 
-  .product-recommendations {
-    display: block;
+  .resource-list__item .price{
+    font-size:1rem;
   }
 
-  .block-resource-list {
-    border-radius: var(--border-radius, 0);
+}
+
+@media (max-width:380px){
+
+  .product-recommendations{
+    padding:1rem .9rem;
   }
 
-  .product-recommendations__skeleton-item {
-    aspect-ratio: 3 / 4;
-    background-color: var(--color-foreground);
-    opacity: var(--skeleton-opacity);
-    border-radius: 4px;
-  }
+}
+
 {% endstylesheet %}
 
 {% schema %}
