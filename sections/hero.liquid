@@ -36,7 +36,7 @@
 
               <div class="new-collections__item-body">
                 <h3 class="new-collections__item-title">{{ block.settings.item_title }}</h3>
-                <p class="new-collections__item-desc">{{ block.settings.item_description }}</p>
+                {% comment %} <p class="new-collections__item-desc">{{ block.settings.item_description }}</p> {% endcomment %}
                 <a href="{{ block.settings.button_url }}" class="new-collections__link">
                   <span>{{ block.settings.button_label }}</span>
                   <svg width="18" height="12" viewBox="0 0 18 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 6h14m-4-4 4 4-4 4"/></svg>
@@ -176,7 +176,7 @@
 /* ===== CAROUSEL TRACK WITH SMOOTH MASK ===== */
 #{{ section_id }} .new-collections__track-wrapper {
   overflow: hidden;
-  border-radius: 32px;
+  border-radius: 18px;
   margin: 0 -5px;
   background: transparent;
   mask: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
@@ -187,27 +187,28 @@
   gap: 30px;
   transition: transform 0.9s cubic-bezier(0.2, 0.9, 0.3, 1);
   will-change: transform;
+    max-width:1200px
   padding: 12px 0 20px; /* space for shadow */
 }
 
 /* ===== PRODUCT CARD – TIMELESS ELEGANCE ===== */
 #{{ section_id }} .new-collections__item {
   flex: 0 0 calc((100% - 60px) / 3);
-  background: var(--card-pure);
-  border-radius: 32px;
+  {% comment %} background: var(--card-pure); {% endcomment %}
+  {% comment %} border-radius: 32px; {% endcomment %}
   overflow: hidden;
-  box-shadow: var(--shadow-elegant);
+  {% comment %} box-shadow: var(--shadow-elegant); {% endcomment %}
   transition: var(--transition-classic);
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(151, 143, 143, 0.4);
   backdrop-filter: blur(3px);
   transform: translateY(0);
 }
 
 #{{ section_id }} .new-collections__item:hover {
   transform: translateY(-10px) scale(1.01);
-  box-shadow: var(--shadow-hover);
+  {% comment %} box-shadow: var(--shadow-hover); {% endcomment %}
   border-color: rgba(163, 137, 95, 0.2);
 }
 
