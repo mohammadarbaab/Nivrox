@@ -58,14 +58,6 @@
       "name": "Collection Grid",
       "settings": {}
     },
-    "custom_text_zNUkR6": {
-      "type": "custom-text",
-      "name": "Custom Text",
-      "settings": {
-        "heading": "ABOUT NIVROX",
-        "text": "Nivrox is a modern fashion brand focused on clean silhouettes, premium fabrics, and everyday comfort. Our collections are designed to deliver effortless style with a confident and contemporary look."
-      }
-    },
     "shop_tees_1": {
       "type": "featured-products",
       "settings": {
@@ -96,6 +88,14 @@
         "show_view_all": true,
         "view_all_text": "View All Products",
         "view_all_link": "shopify://collections/all"
+      }
+    },
+    "custom_text_zNUkR6": {
+      "type": "custom-text",
+      "name": "Custom Text",
+      "settings": {
+        "heading": "ABOUT NIVROX",
+        "text": "Nivrox is a modern fashion brand focused on clean silhouettes, premium fabrics, and everyday comfort. Our collections are designed to deliver effortless style with a confident and contemporary look."
       }
     },
     "info_boxes": {
@@ -164,6 +164,7 @@
       "settings": {
         "logo_text": "YOUR BRAND",
         "menu_1_title": "LINKS",
+        "logo_image": "shopify://shop_images/DA2ACC1A-A9F6-4283-8AA8-BC0F3B0FF8D1_1_201_a.jpg",
         "footer_menu_1": "home",
         "menu_2_title": "LEGAL",
         "footer_menu_2": "legal",
