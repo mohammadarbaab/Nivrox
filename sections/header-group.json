@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "Free shipping on orders over £75",
+            "text": "<strong>Free Shipping All Over India</strong>",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.875rem",
