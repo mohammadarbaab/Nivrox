@@ -236,7 +236,8 @@
     /* Base Section Styles */
     .featured-collection {
       padding: 30px 20px 20px;
-      background: #F7F3EE;
+      {% comment %} background: #F7F3EE; {% endcomment %}
+       background-color:red;
       position: relative;
       overflow: hidden;
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
@@ -256,9 +257,10 @@
     .container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 20px;
+      padding: 0 0px;
       position: relative;
       z-index: 2;
+      background-color:orange;  
     }
 
     /* =============================================================================
@@ -345,6 +347,7 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 30px;
       margin-bottom: 40px;
+      background-color:gray;
       align-items: stretch; /* Ensures all grid items stretch to same height */
     }
 
@@ -889,6 +892,7 @@
       .products-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 12px;
+        background-color:red;
       }
 
       /* Ensure card inner takes full height and aligns properly */
