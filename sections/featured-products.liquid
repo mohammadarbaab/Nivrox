@@ -344,13 +344,12 @@
 /* =============================================================================
   Products Grid
   ============================================================================= */
-
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
   margin-bottom: 40px;
-  {% comment %} background-color:orange; {% endcomment %}
+  align-items: stretch; /* ✅ FIX */
 }
 
 /* Product Card */
@@ -358,29 +357,26 @@
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.6s ease forwards;
-  {% comment %} background-color:gray; {% endcomment %}
-}
 
+  display: flex;          /* ✅ ADD */
+  height: 100%;           /* ✅ ADD */
+}
 /* Stagger animation for cards */
 {% for i in (1..12) %}
 .product-card:nth-child({{ i }}) {
   animation-delay: {{ i | times: 0.1 }}s;
 }
 {% endfor %}
-
 .product-card-inner {
-  /* background: var(--fc-white);
-   */
-   background-color: #10B981;
-  {% comment %} border-radius: var(--fc-radius-lg); {% endcomment %}
+  background-color: #10B981;
   overflow: hidden;
   box-shadow: var(--fc-shadow-sm);
   transition: var(--fc-transition-bounce);
   position: relative;
+
   height: 100%;
   display: flex;
   flex-direction: column;
-  {% comment %} border: 1px solid var(--fc-border-light); {% endcomment %}
 }
 
 .product-card-inner:hover {
@@ -625,9 +621,11 @@
 .product-info {
   padding: 20px;
   background: #F7F3EE;
-  flex: 1;
+
+  flex: 1;                /* ✅ already hai */
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* ✅ ADD */
 }
 
 .product-vendor {
@@ -643,11 +641,10 @@
 .product-title {
   font-size: 18px;
   font-weight: 500;
-  {% comment %} margin-bottom: 10px; {% endcomment %}
-  {% comment %} background-color:red; {% endcomment %}
   line-height: 1.4;
-}
 
+  min-height: 48px; /* ✅ ADD (2 lines fix) */
+}
 .product-title a {
   color: var(--fc-text-dark);
   text-decoration: none;
@@ -842,15 +839,16 @@
   }
 }
 
-/* =============================================================================
+//* =============================================================================
   Responsive Design
-  ============================================================================= */
+============================================================================= */
 
 /* Large Desktop */
 @media (min-width: 1200px) and (max-width: 1400px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
     gap: 25px;
+    align-items: stretch; /* ✅ FIX */
   }
 }
 
@@ -859,6 +857,7 @@
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 25px;
+    align-items: stretch; /* ✅ FIX */
   }
 }
 
@@ -867,29 +866,36 @@
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    align-items: stretch; /* ✅ FIX */
   }
-  
+
+  .product-card {
+    display: flex;   /* ✅ FIX */
+    height: 100%;
+  }
+
   .featured-collection {
     padding: 60px 15px;
   }
-  
+
   .section-header {
     margin-bottom: 40px;
   }
-  
+
   .section-title {
     font-size: 36px;
   }
-  
+
   .section-description {
     font-size: 16px;
     padding: 0 15px;
   }
-  
+
   .product-title {
     font-size: 16px;
+    min-height: 40px; /* ✅ FIX (equal height) */
   }
-  
+
   .price-regular,
   .price-sale {
     font-size: 18px;
@@ -901,19 +907,44 @@
   .products-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px;
+    align-items: stretch; /* ✅ FIX */
   }
 
-  /* 🔥 Card ko compact karo */
+  .product-card {
+    display: flex;
+    height: 100%;
+  }
+
   .product-card-inner {
     border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* 🔥 Image height thodi kam */
   .product-image-wrapper {
     aspect-ratio: 3/4;
+    width: 100%;
   }
 
-  /* 🔥 Buttons chhote */
+  .product-info {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ✅ MAIN FIX */
+  }
+
+  .product-title {
+    font-size: 12px;
+    line-height: 1.3;
+    min-height: 32px; /* ✅ FIX */
+  }
+
+  .product-vendor {
+    font-size: 9px;
+  }
+
   .action-btn {
     width: 30px;
     height: 30px;
@@ -924,31 +955,15 @@
     height: 14px;
   }
 
-  /* 🔥 Add to cart button slim */
   .add-to-cart-btn {
     padding: 6px 8px;
     font-size: 11px;
     border-radius: 6px;
-    text-align:center;
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
   }
 
-  /* 🔥 Product info compact */
-  .product-info {
-    padding: 10px;
-  }
-
-  .product-title {
-    font-size: 12px;
-    line-height: 1.3;
-  }
-
-  .product-vendor {
-    font-size: 9px;
-  }
-
-  /* 🔥 Price size adjust */
   .price-regular,
   .price-sale {
     font-size: 14px;
@@ -958,7 +973,6 @@
     font-size: 12px;
   }
 
-  /* 🔥 Rating small */
   .star {
     font-size: 10px;
   }
@@ -967,39 +981,59 @@
     font-size: 10px;
   }
 
-  /* 🔥 Color dots small */
   .color-dot {
     width: 18px;
     height: 18px;
   }
 
-  /* 🔥 Badge small */
   .badge {
     padding: 3px 6px;
     font-size: 8px;
   }
-
 }
 
 /* Mobile Portrait */
 @media (max-width: 480px) {
-
   .products-grid {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px;
+    align-items: stretch; /* ✅ FIX */
   }
 
-  /* 🔥 Card ko compact karo */
+  .product-card {
+    display: flex;
+    height: 100%;
+  }
+
   .product-card-inner {
-    border-radius: 10px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 
-  /* 🔥 Image height thodi kam */
   .product-image-wrapper {
     aspect-ratio: 3/4;
+    width: 100%;
   }
 
-  /* 🔥 Buttons chhote */
+  .product-info {
+    padding: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .product-title {
+    font-size: 12px;
+    line-height: 1.3;
+    min-height: 32px;
+  }
+
+  .product-vendor {
+    font-size: 9px;
+  }
+
   .action-btn {
     width: 30px;
     height: 30px;
@@ -1010,31 +1044,14 @@
     height: 14px;
   }
 
-  /* 🔥 Add to cart button slim */
   .add-to-cart-btn {
     padding: 6px 8px;
     font-size: 11px;
     border-radius: 6px;
-    text-align:center;
-    display:flex;
-    flex-direction:row;
+    display: flex;
+    justify-content: center;
   }
 
-  /* 🔥 Product info compact */
-  .product-info {
-    padding: 10px;
-  }
-
-  .product-title {
-    font-size: 12px;
-    line-height: 1.3;
-  }
-
-  .product-vendor {
-    font-size: 9px;
-  }
-
-  /* 🔥 Price size adjust */
   .price-regular,
   .price-sale {
     font-size: 14px;
@@ -1044,7 +1061,6 @@
     font-size: 12px;
   }
 
-  /* 🔥 Rating small */
   .star {
     font-size: 10px;
   }
@@ -1053,149 +1069,47 @@
     font-size: 10px;
   }
 
-  /* 🔥 Color dots small */
   .color-dot {
     width: 15px;
     height: 15px;
   }
 
-  /* 🔥 Badge small */
   .badge {
     padding: 3px 6px;
     font-size: 8px;
   }
-  
-
 }
 
 /* Small Mobile */
 @media (max-width: 375px) {
   .products-grid {
     max-width: 280px;
+    margin: 0 auto; /* ✅ center fix */
   }
-  
+
   .product-info {
-    padding: 15px;
+    padding: 12px;
   }
-  
+
   .product-title {
-    font-size: 15px;
+    font-size: 13px;
+    min-height: 30px;
   }
-  
+
   .price-regular,
   .price-sale {
-    font-size: 16px;
+    font-size: 15px;
   }
-  
+
   .color-dot {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
   }
-  .btn-text{
-font-size:8px;
-}
-  
-}
 
-/* =============================================================================
-  Touch Device Optimizations
-  ============================================================================= */
-
-@media (hover: none) and (pointer: coarse) {
-  .product-actions {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  
-  .product-add-to-cart {
-    transform: translateY(0);
-  }
-  
-  .product-image-wrapper:hover .product-image-front {
-    transform: none;
-  }
-  
-  .product-image-wrapper:hover .product-image-hover {
-    opacity: 0;
-  }
-  
-  .product-card-inner:hover {
-    transform: none;
-    box-shadow: var(--fc-shadow-sm);
-  }
-  
-  .action-btn {
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .add-to-cart-btn {
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .color-dot {
-    -webkit-tap-highlight-color: transparent;
+  .btn-text {
+    font-size: 8px;
   }
 }
-
-/* =============================================================================
-  Loading States & Animations
-  ============================================================================= */
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.product-card.loading .product-image {
-  animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* =============================================================================
-  Print Styles
-  ============================================================================= */
-
-@media print {
-  .featured-collection {
-    padding: 20px 0;
-    background: none;
-  }
-  
-  .product-card-inner {
-    box-shadow: none;
-    border: 1px solid #ddd;
-  }
-  
-  .product-actions,
-  .product-add-to-cart,
-  .view-all-btn {
-    display: none;
-  }
-}
-  @keyframes slideIn {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
 </style>
 
 <script>
