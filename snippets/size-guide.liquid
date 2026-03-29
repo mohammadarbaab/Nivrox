@@ -388,18 +388,38 @@ tr:hover {
 
 <script>
   function openSizeGuide() {
-  const modal = document.getElementById('sizeGuideModal');
-  if(modal){
-    modal.style.display = 'block';
-    document.body.classList.add('modal-open'); // scroll lock
+    document.getElementById('sizeGuideModal').style.display = 'block';
   }
-}
 
-function closeSizeGuide() {
-  const modal = document.getElementById('sizeGuideModal');
-  if(modal){
-    modal.style.display = 'none';
-    document.body.classList.remove('modal-open'); // scroll unlock
+  function closeSizeGuide() {
+    document.getElementById('sizeGuideModal').style.display = 'none';
   }
-}
+
+  function toggleMeasure() {
+    let el = document.getElementById('measureContent');
+    el.style.display = el.style.display === 'block' ? 'none' : 'block';
+  }
+
+  function showTab(e, tab) {
+    document.querySelectorAll('.tab-content').forEach((el) => el.classList.remove('active'));
+    document.querySelectorAll('.tabs button').forEach((btn) => btn.classList.remove('active'));
+    document.getElementById(tab).classList.add('active');
+    e.target.classList.add('active');
+  }
+  // ✅ CLOSE ON OUTSIDE CLICK
+  window.addEventListener('click', function (event) {
+    let modal = document.getElementById('sizeGuideModal');
+    if (event.target === modal) {
+      closeSizeGuide();
+    }
+  });
+  function openSizeGuide() {
+    document.getElementById('sizeGuideModal').style.display = 'block';
+    document.body.classList.add('modal-open'); // 👈 lock scroll
+  }
+
+  function closeSizeGuide() {
+    document.getElementById('sizeGuideModal').style.display = 'none';
+    document.body.classList.remove('modal-open'); // 👈 unlock scroll
+  }
 </script>
